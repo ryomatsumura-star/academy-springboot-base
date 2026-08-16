@@ -12,6 +12,8 @@ services:
       - ./:/app
     depends_on:
       - db
+    environment:
+      SPRING_PROFILES_ACTIVE: local
 
   db:
     image: postgres:13.1
