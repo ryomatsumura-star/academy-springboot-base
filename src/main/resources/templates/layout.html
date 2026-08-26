@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpringBoot Basic</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="nav-brand">
+        <a th:href="@{/home}">SpringBoot Basic</a>
+      </div>
+      <div class="nav-links" sec:authorize="isAuthenticated()">
+        <a th:href="@{/home}">ホーム</a>
+      </div>
+      <div class="nav-links" sec:authorize="!isAuthenticated()">
+        <a th:href="@{/register}">新規登録</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div layout:fragment="content"></div>
+  </main>
+</body>
+</html>
