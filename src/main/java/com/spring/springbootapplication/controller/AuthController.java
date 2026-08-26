@@ -19,6 +19,11 @@ public class AuthController {
     this.userService = userService;
   }
 
+  @GetMapping("/")
+  public String root() {
+    return "redirect:/register";
+  }
+
   @GetMapping("/register")
   public String registerForm(Model model) {
     model.addAttribute("registerRequest", new RegisterRequest("", "", ""));
@@ -26,25 +31,26 @@ public class AuthController {
   }
 
   @PostMapping("/register")
-  public String register(@Valid @ModelAttribute RegisterRequest registerRequest,
-                        BindingResult bindingResult,
-                        Model model) {
-      if (bindingResult.hasErrors()) {
-        return "auth/register";
-      }
+  public String register(
+      @Valid @ModelAttribute RegisterRequest registerRequest,
+      BindingResult bindingResult,
+      Model model
+  ) {
+    if (bindingResult.hasErrors()) {
+      return "auth/register";
+    }
 
-      try {
-          userService.register(registerRequest);
-          return "redirect:/home";
-      } catch (IllegalArgumentException e) {
-          model.addAttribute("errorMessage", e.getMessage());
-          return "auth/register";
-      }
+    try {
+      userService.register(registerRequest);
+      return "redirect:/home";
+    } catch (IllegalArgumentException e) {
+      model.addAttribute("errorMessage", e.getMessage());
+      return "auth/register";
+    }
   }
 
   @GetMapping("/home")
   public String home() {
     return "home";
   }
-
 }
