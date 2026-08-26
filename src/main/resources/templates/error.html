@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>エラー</title>
+</head>
+<body>
+  <div layout:fragment="content">
+    <h1>エラーが発生しました</h1>
+    <p th:text="${errorMessage}">エラーメッセージ</p>
+    <a th:href="@{/home}">ホームに戻る</a>
+  </div>
+</body>
+</html>
