@@ -73,6 +73,7 @@ main {
 
 .field-error {
   color: #FF0000;
+  font-size: 12px;
 }
 
 .register-title {
@@ -104,6 +105,7 @@ main {
 .form-group label {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  font-size: 12px;
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -117,6 +119,7 @@ main {
   outline: none;
 
   font-family: "Roboto", sans-serif;
+  font-size: 12px;
   box-sizing: border-box;
 }
 
