@@ -155,14 +155,11 @@ main {
 
 .login-title {
   margin-top: 80px;
-  margin-bottom: 80px;
-
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: 400;
   line-height: 133%;
   letter-spacing: 0;
-
   color: rgba(0, 0, 0, 0.75);
   text-align: center;
 }
