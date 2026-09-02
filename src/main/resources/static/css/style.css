@@ -83,6 +83,7 @@ main {
 
 .register-title {
   margin-top: 80px;
+  margin-bottom: 80px;
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: 400;
@@ -155,6 +156,7 @@ main {
 
 .login-title {
   margin-top: 80px;
+  margin-bottom: 80px;
   font-family: "Roboto", sans-serif;
   font-size: 36px;
   font-weight: 400;
