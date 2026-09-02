@@ -71,6 +71,11 @@ main {
     color: #FFFFFF;
 }
 
+
+/* =========================
+新規登録
+========================= */
+
 .field-error {
   color: #FF0000;
   font-size: 12px;
@@ -142,4 +147,76 @@ main {
   white-space: nowrap;
   cursor: pointer;
   align-self: center;
+}
+
+/* =========================
+ログイン画面
+========================= */
+
+.login-title {
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 133%;
+  letter-spacing: 0;
+
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+.login-form {
+  width: 480px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  margin: 0 auto;
+}
+
+.login-submit-button,
+.register-link-button {
+  width: 268px;
+  height: 53px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: center;
+
+  background-color: #1B5678;
+
+  border: none;
+  border-radius: 4px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0;
+
+  color: #FFFFFF;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.login-submit-button:hover,
+.register-link-button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: #FF0000;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+
+  text-align: center;
 }
