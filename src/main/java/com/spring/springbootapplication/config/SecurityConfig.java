@@ -16,9 +16,21 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
   http
   .authorizeHttpRequests(authorize -> authorize
-  .requestMatchers("/", "/register", "/home", "/css/**", "/js/**").permitAll()
+  .requestMatchers("/register", "/login", "/css/**", "/js/**").permitAll()
   .anyRequest().authenticated()
-  );
+  )
+
+  .formLogin(form -> form
+              .loginPage("/login")
+              .usernameParameter("email")
+              .defaultSuccessUrl("/home", true)
+              .permitAll()
+            )
+
+  .logout(logout -> logout
+            .logoutSuccessUrl("/login?logout")
+            .permitAll()
+          );
 
   return http.build();
 }

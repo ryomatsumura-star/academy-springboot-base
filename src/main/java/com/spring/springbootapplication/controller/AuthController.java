@@ -19,11 +19,6 @@ public class AuthController {
     this.userService = userService;
   }
 
-  @GetMapping("/")
-  public String root() {
-    return "redirect:/register";
-  }
-
   @GetMapping("/register")
   public String registerForm(Model model) {
     model.addAttribute("registerRequest", new RegisterRequest("", "", ""));
@@ -42,11 +37,16 @@ public class AuthController {
 
     try {
       userService.register(registerRequest);
-      return "redirect:/home";
+      return "redirect:/login?registered";
     } catch (IllegalArgumentException e) {
       model.addAttribute("errorMessage", e.getMessage());
       return "auth/register";
     }
+  }
+
+  @GetMapping("/login")
+  public String loginForm() {
+      return "auth/login";
   }
 
   @GetMapping("/home")
