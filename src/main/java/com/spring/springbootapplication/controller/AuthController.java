@@ -2,6 +2,8 @@ package com.spring.springbootapplication.controller;
 
 import com.spring.springbootapplication.dto.RegisterRequest;
 import com.spring.springbootapplication.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AuthController {
@@ -45,8 +48,14 @@ public class AuthController {
   }
 
   @GetMapping("/login")
-  public String loginForm() {
-      return "auth/login";
+  public String loginForm(HttpSession session, Model model) {
+    Object loginError = session.getAttribute("loginError");
+
+    if (loginError != null) {
+      model.addAttribute("loginError", loginError);
+      session.removeAttribute("loginError");
+    }
+    return "auth/login";
   }
 
   @GetMapping("/home")
