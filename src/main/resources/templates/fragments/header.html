@@ -1,9 +1,22 @@
-<header th:fragment="header" class="header">
+<header th:fragment="header" class="header"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
   <div class="header-logo">
     My Portfolio
   </div>
 
-  <a class="login-button" th:href="@{/login}">
+  <a sec:authorize="!isAuthenticated()"
+     class="login-button"
+     th:href="@{/login}">
     ログイン
   </a>
+
+  <form sec:authorize="isAuthenticated()"
+        th:action="@{/logout}"
+        method="post">
+    <button type="submit" class="login-button">
+      ログアウト
+    </button>
+  </form>
+
 </header>
