@@ -12,6 +12,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
+  private final CustomAuthenticationFailureHandler authenticationFailureHandler;
+
+  public SecurityConfig(
+      CustomAuthenticationFailureHandler authenticationFailureHandler
+  ) {
+    this.authenticationFailureHandler = authenticationFailureHandler;
+  }
+
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
   http
@@ -24,6 +32,7 @@ public class SecurityConfig {
               .loginPage("/login")
               .usernameParameter("email")
               .defaultSuccessUrl("/home", true)
+              .failureHandler(authenticationFailureHandler)
               .permitAll()
             )
 
