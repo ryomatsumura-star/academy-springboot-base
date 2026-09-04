@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.Authentication;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -37,9 +38,17 @@ public class UserService implements UserDetailsService {
     return userRepository.save(user);
   }
 
-  @Override
-  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-    return userRepository.findByEmail(email)
-        .orElseThrow(() -> new UsernameNotFoundException("ユーザーが見つかりません: " + email));
-  }
+  public User findByEmail(String email) {
+  return userRepository.findByEmail(email)
+      .orElseThrow(() -> new UsernameNotFoundException(
+          "ユーザーが見つかりません: " + email
+      ));
+}
+
+@Override
+public UserDetails loadUserByUsername(String email)
+    throws UsernameNotFoundException {
+
+  return findByEmail(email);
+}
 }

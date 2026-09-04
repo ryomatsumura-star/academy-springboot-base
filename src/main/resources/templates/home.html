@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
   <meta charset="UTF-8">
   <title>ホーム</title>
@@ -8,15 +10,53 @@
 
 <body>
 
-<div th:replace="~{fragments/header :: header}"></div>
+  <div th:replace="~{fragments/header :: header}"></div>
 
-<main>
-  <h1>ホーム</h1>
+  <main class="home-main">
+    <section class="profile">
+      <div class="profile-user">
+        <img class="profile-avatar"
+             th:src="${#strings.isEmpty(user.avatarImageUrl)
+                      ? '/images/avatar.png'
+                      : user.avatarImageUrl}"
+             alt="プロフィール画像">
+        <p class="profile-name"
+           th:text="${user.name}">
+          ユーザー名
+        </p>
+      </div>
+      <div class="profile-content">
+        <h1 class="profile-title">
+          自己紹介
+        </h1>
+        <div class="profile-title-line"></div>
+        <p class="profile-introduction"
+           th:text="${user.introduction}">
+        </p>
+        <a class="profile-edit-button"
+           th:href="@{/profile/edit}">
+          自己紹介を編集する
+        </a>
+      </div>
+    </section>
+    <section class="learning-chart">
+      <div class="learning-chart-header">
+        <div class="learning-chart-title-area">
+          <h2 class="learning-chart-title">
+            学習チャート
+          </h2>
+          <div class="learning-chart-title-line"></div>
+        </div>
+        <a class="learning-chart-edit-button"
+          th:href="@{/skill/edit}">
+          編集する
+        </a>
+      </div>
+      <!-- グラフは未実装 -->
+    </section>
+  </main>
 
-  <p>のちに実装予定</p>
-
-</main>
-
-<div th:replace="~{fragments/footer :: footer}"></div>
+  <div th:replace="~{fragments/footer :: footer}"></div>
 
 </body>
+</html>

@@ -37,6 +37,12 @@ public class User implements UserDetails{
   @Column(name = "updated_at", nullable = false)
   private LocalDateTime updatedAt;
 
+  @Column(columnDefinition = "TEXT")
+  private String introduction;
+
+  @Column(name = "avatar_image_url", length = 255)
+  private String avatarImageUrl;
+
   public User() {
   }
 
@@ -116,5 +122,21 @@ public class User implements UserDetails{
   public void prePersist() {
     this.createdAt = LocalDateTime.now();
     this.updatedAt = LocalDateTime.now();
+  }
+
+  public String getIntroduction() {
+    return introduction;
+  }
+
+  public void setIntroduction(String introduction) {
+    this.introduction = introduction;
+  }
+
+  public String getAvatarImageUrl() {
+    return avatarImageUrl;
+  }
+
+  public void setAvatarImageUrl(String avatarImageUrl) {
+    this.avatarImageUrl = avatarImageUrl;
   }
 }
