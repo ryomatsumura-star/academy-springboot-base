@@ -219,3 +219,159 @@ main {
 
   text-align: center;
 }
+
+/* =========================
+ホーム画面
+========================= */
+
+.home-main {
+  width: 100%;
+  padding: 80px 20px;
+  box-sizing: border-box;
+}
+
+/* =========================
+ホーム画面-プロフィール
+========================= */
+
+.profile {
+  width: 960px;
+  max-width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.profile-user {
+  width: 360px;
+  text-align: center;
+}
+
+/* アバター画像 */
+.profile-avatar {
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ユーザー名 */
+.profile-name {
+  margin: 8px 0 0;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.profile-content {
+  width: 520px;
+  max-width: 100%;
+  text-align: left;
+}
+
+/* 自己紹介タイトル */
+.profile-title {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* 自己紹介タイトル下線 */
+.profile-title-line {
+  width: 240px;
+  margin-top: 8px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+/* 自己紹介文 */
+.profile-introduction {
+  min-height: 81px;
+  margin: 16px 0;
+  font-size: 18px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* 自己紹介編集ボタン */
+.profile-edit-button {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 4px;
+  background-color: #1b5678;
+  color: #ffffff;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.profile-edit-button:hover {
+  opacity: 0.85;
+}
+
+/* =========================
+ホーム画面-学習チャート
+========================= */
+
+.learning-chart {
+  width: 960px;
+  max-width: 100%;
+  margin: 80px auto 0;
+}
+
+/* タイトル・編集ボタン */
+.learning-chart-header {
+  width: 400px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+/* タイトルと下線 */
+.learning-chart-title-area {
+  width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 学習チャート */
+.learning-chart-title {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* タイトル下線 */
+.learning-chart-title-line {
+  width: 400px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+/* 編集ボタン */
+.learning-chart-edit-button {
+  display: inline-block;
+  padding: 16px 40px;
+  border-radius: 4px;
+
+  background-color: #1b5678;
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+
+  text-decoration: none;
+}
+
+.learning-chart-edit-button:hover {
+  opacity: 0.85;
+}

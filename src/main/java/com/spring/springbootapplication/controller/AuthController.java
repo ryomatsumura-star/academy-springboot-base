@@ -1,5 +1,6 @@
 package com.spring.springbootapplication.controller;
 
+import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.dto.RegisterRequest;
 import com.spring.springbootapplication.service.UserService;
 
@@ -11,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import jakarta.servlet.http.HttpSession;
+import org.springframework.security.core.Authentication;
 
 @Controller
 public class AuthController {
@@ -59,7 +60,9 @@ public class AuthController {
   }
 
   @GetMapping("/home")
-  public String home() {
+  public String home(Authentication authentication, Model model) {
+    User user = userService.findByEmail(authentication.getName());
+    model.addAttribute("user", user);
     return "home";
   }
 }
