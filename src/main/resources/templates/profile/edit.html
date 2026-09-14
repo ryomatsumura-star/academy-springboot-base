@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>自己紹介を編集する</title>
+
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+  <header th:replace="~{fragments/header :: header}"></header>
+
+  <main class="profile-edit">
+    <h1 class="profile-edit-title">
+      自己紹介を編集する
+    </h1>
+
+    <form
+      class="profile-edit-form"
+      th:action="@{/profile/edit}"
+      th:object="${profileEditRequest}"
+      method="post"
+      enctype="multipart/form-data">
+
+      <!-- 自己紹介 -->
+      <div class="profile-edit-introduction">
+        <label
+          class="profile-edit-label"
+          for="introduction">
+          自己紹介文
+        </label>
+
+        <textarea
+          class="profile-edit-textarea"
+          id="introduction"
+          th:field="*{introduction}">
+        </textarea>
+
+        <p
+          class="profile-edit-error"
+          th:errors="*{introduction}">
+        </p>
+      </div>
+
+      <!-- アバター画像 -->
+      <div class="profile-edit-avatar">
+        <label
+          class="profile-edit-avatar-label"
+          for="avatarImage">
+          アバター画像
+        </label>
+
+        <div class="profile-edit-file-area">
+          <label
+            class="profile-edit-file-button"
+            for="avatarImage">
+            画像ファイルを添付する
+          </label>
+
+          <span
+            class="profile-edit-file-name"
+            id="fileName">
+          </span>
+        </div>
+
+        <input
+          type="file"
+          id="avatarImage"
+          name="avatarImage"
+          accept="image/*">
+      </div>
+
+      <!-- 確定ボタン -->
+      <button
+        class="profile-edit-submit"
+        type="submit">
+        自己紹介を確定する
+      </button>
+    </form>
+  </main>
+
+  <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+  <script>
+    const avatarImage = document.getElementById('avatarImage');
+    const fileName = document.getElementById('fileName');
+
+    avatarImage.addEventListener('change', function() {
+      if (avatarImage.files.length > 0) {
+        fileName.textContent = avatarImage.files[0].name;
+      } else {
+        fileName.textContent = '';
+      }
+    });
+  </script>
+</body>
+
+</html>
