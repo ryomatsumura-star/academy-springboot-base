@@ -375,3 +375,181 @@ main {
 .learning-chart-edit-button:hover {
   opacity: 0.85;
 }
+
+/* ==============================
+   プロフィール編集画面
+============================== */
+
+.profile-edit {
+  width: 100%;
+  min-height: 640px;
+  padding-top: 72px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.profile-edit-title {
+  width: 324px;
+  height: 48px;
+  margin: 0 auto 48px;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 133%;
+  text-align: center;
+}
+
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* ==============================
+   自己紹介
+============================== */
+
+.profile-edit-introduction {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+}
+
+.profile-edit-label {
+  width: 100%;
+  margin-bottom: 3px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+}
+
+.profile-edit-textarea {
+  width: 480px;
+  height: 95px;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.75);
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  border-radius: 0;
+  outline: none;
+  resize: none;
+}
+
+.profile-edit-textarea:focus {
+  border-bottom: 1px solid #1B5678;
+}
+
+.profile-edit-error {
+  width: 480px;
+  min-height: 20px;
+  margin: 3px 0 0;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+}
+
+/* ==============================
+   アバター画像
+============================== */
+
+.profile-edit-avatar {
+  display: flex;
+  flex-direction: column;
+  width: 480px;
+  margin-top: 10px;
+}
+
+.profile-edit-avatar-label {
+  width: 73px;
+  height: 12px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0.15px;
+}
+
+.profile-edit-file-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 480px;
+}
+
+.profile-edit-file-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 202px;
+  height: 32px;
+  padding: 8px 24px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  background-color: rgba(0, 0, 0, 0.10);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.profile-edit-file-button:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.profile-edit-file-name {
+  max-width: 260px;
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 12px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#avatarImage {
+  display: none;
+}
+
+/* ==============================
+   確定ボタン
+============================== */
+
+.profile-edit-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 322px;
+  height: 53px;
+  margin-top: 48px;
+  padding: 16px 80px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+  white-space: nowrap;
+  background-color: #1B5678;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.profile-edit-submit:hover {
+  opacity: 0.9;
+}
