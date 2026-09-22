@@ -46,12 +46,6 @@ public class ImageStorageService {
         StandardCopyOption.REPLACE_EXISTING
       );
 
-      System.out.println("=== 画像保存確認 ===");
-      System.out.println("uploadDir: " + uploadDir);
-      System.out.println("destination: " + destination);
-      System.out.println("exists: " + Files.exists(destination));
-      System.out.println("size: " + Files.size(destination));
-
     } catch (IOException e) {
       throw new IllegalStateException(
         "画像の保存に失敗しました",
