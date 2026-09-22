@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
     return "error";
   }
 
-  ExceptionHandler(Exception.class)
+  @ExceptionHandler(Exception.class)
   public String handleGeneral(Exception e, Model model) {
     System.out.println("=== 予期しない例外 ===");
     e.printStackTrace();
