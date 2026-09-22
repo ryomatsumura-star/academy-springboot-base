@@ -16,6 +16,13 @@ public class WebConfig implements WebMvcConfigurer {
       .toAbsolutePath()
       .normalize();
 
+    // デバッグ用
+    System.out.println("=== WebConfig確認 ===");
+    System.out.println("WebConfig uploadDir: " + uploadDir);
+    System.out.println(
+      "ResourceLocation: " + uploadDir.toUri().toString()
+    );
+
     registry
       .addResourceHandler("/uploads/**")
       .addResourceLocations(uploadDir.toUri().toString());
