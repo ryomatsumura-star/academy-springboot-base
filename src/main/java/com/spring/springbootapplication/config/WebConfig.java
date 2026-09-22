@@ -1,8 +1,6 @@
 package com.spring.springbootapplication.config;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -16,15 +14,14 @@ public class WebConfig implements WebMvcConfigurer {
       .toAbsolutePath()
       .normalize();
 
-    // デバッグ用
     System.out.println("=== WebConfig確認 ===");
     System.out.println("WebConfig uploadDir: " + uploadDir);
     System.out.println(
-      "ResourceLocation: " + uploadDir.toUri().toString()
+      "ResourceLocation: file:" + uploadDir + "/"
     );
 
     registry
       .addResourceHandler("/uploads/**")
-      .addResourceLocations(uploadDir.toUri().toString());
+      .addResourceLocations("file:" + uploadDir + "/");
   }
 }
