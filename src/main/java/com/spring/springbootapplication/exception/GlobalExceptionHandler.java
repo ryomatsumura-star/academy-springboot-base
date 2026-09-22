@@ -15,7 +15,12 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public String handleGeneral(Exception e, Model model) {
-    model.addAttribute("errorMessage", "予期しないエラーが発生しました");
-    return "error";
+    System.out.println("=== 予期しない例外 ===");
+    e.printStackTrace();
+    model.addAttribute(
+      "errorMessage",
+      "予期しないエラーが発生しました"
+    );
+  return "error";
   }
 }
