@@ -297,6 +297,10 @@ main {
   overflow-wrap: anywhere;
 }
 
+.profile-edit-error{
+  color:#FF0000
+}
+
 /* 自己紹介編集ボタン */
 .profile-edit-button {
   display: inline-block;
