@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>学習内容編集</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+  <div th:replace="~{fragments/header :: header}"></div>
+
+  <main class="skill-edit-main">
+
+    <!-- 月選択 -->
+    <div class="skill-month">
+
+      <form th:action="@{/skill/edit}" method="get">
+
+        <select
+          name="month"
+          onchange="this.form.submit()">
+
+          <option
+            th:each="month : ${months}"
+            th:value="${month}"
+            th:text="${month.monthValue + '月'}"
+            th:selected="${month.equals(selectedMonth)}">
+          </option>
+
+        </select>
+
+      </form>
+
+    </div>
+
+    <!-- カテゴリー -->
+    <section
+      class="skill-category"
+      th:each="category : ${categories}">
+
+      <div class="skill-category-header">
+
+        <div class="skill-category-title-area">
+
+          <h2
+            class="skill-category-title"
+            th:text="${category.name}">
+          </h2>
+
+          <div class="skill-category-title-line"></div>
+
+        </div>
+
+        <button
+          class="skill-add-button"
+          type="button">
+          項目を追加する
+        </button>
+
+      </div>
+
+      <!-- 学習内容一覧 -->
+      <div class="skill-table">
+
+        <!-- テーブルヘッダー -->
+        <div class="skill-table-header">
+
+          <div class="skill-header-name">
+            項目名
+          </div>
+
+          <div class="skill-header-time">
+            学習時間
+          </div>
+
+          <div class="skill-header-save"></div>
+
+          <div class="skill-header-delete"></div>
+
+        </div>
+
+        <!-- テーブルデータ -->
+        <div class="skill-table-body">
+
+          <!-- テーブル行 -->
+          <div
+            class="skill-table-row"
+            th:each="learningData : ${learningDataList}"
+            th:if="${learningData.category.id == category.id}">
+
+            <!-- 項目名 -->
+            <div class="skill-name-cell">
+
+              <span
+                class="skill-name"
+                th:text="${learningData.name}">
+              </span>
+
+            </div>
+
+            <!-- 学習時間 -->
+            <div class="skill-time-cell">
+
+              <input
+                class="skill-time-input"
+                type="number"
+                th:value="${learningData.studyMinutes}">
+
+            </div>
+
+            <!-- 保存 -->
+            <div class="skill-save-cell">
+
+              <button
+                class="skill-save-button"
+                type="button">
+                学習時間を保存する
+              </button>
+
+            </div>
+
+            <!-- 削除 -->
+            <div class="skill-delete-cell">
+
+              <button
+                class="skill-delete-button"
+                type="button">
+                削除する
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <div th:replace="~{fragments/footer :: footer}"></div>
+
+</body>
+
+</html>
