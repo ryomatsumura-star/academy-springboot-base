@@ -1,11 +1,14 @@
 package com.spring.springbootapplication.controller;
 
 import com.spring.springbootapplication.entity.User;
+import com.spring.springbootapplication.entity.LearningData;
 import com.spring.springbootapplication.dto.RegisterRequest;
+import com.spring.springbootapplication.service.LearningDataService;
 import com.spring.springbootapplication.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,13 +17,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.security.core.Authentication;
 
+import java.util.List;
+import java.util.Map;
+
 @Controller
 public class AuthController {
 
   private final UserService userService;
+  private final LearningDataService learningDataService;
 
-  public AuthController(UserService userService) {
+
+  public AuthController(UserService userService, LearningDataService learningDataService) {
     this.userService = userService;
+    this.learningDataService = learningDataService;
   }
 
   @GetMapping("/register")
@@ -62,7 +71,11 @@ public class AuthController {
   @GetMapping("/home")
   public String home(Authentication authentication, Model model) {
     User user = userService.findByEmail(authentication.getName());
+    List<LearningData> learningDataList = learningDataService.findByUser(user);
+    Map<String, Integer> categoryMinutes = learningDataService.getCategoryMinutes(user);
     model.addAttribute("user", user);
+    model.addAttribute("learningDataList", learningDataList);
+    model.addAttribute("categoryMinutes", categoryMinutes);
     return "home";
   }
 }

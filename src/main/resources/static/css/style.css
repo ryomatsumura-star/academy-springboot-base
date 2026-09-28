@@ -555,3 +555,334 @@ main {
 .profile-edit-submit:hover {
   opacity: 0.9;
 }
+
+/* ==============================
+項目一覧ページ
+============================== */
+
+.skill-edit-main {
+  width: 1440px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 0;
+  box-sizing: border-box;
+}
+
+.skill-edit-main,
+.skill-edit-main button,
+.skill-edit-main input,
+.skill-edit-main select {
+  font-family: Roboto, sans-serif;
+}
+
+/* =========================
+題目
+========================= */
+
+.skill-month,
+.skill-category {
+  width: 960px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+プルダウン
+========================= */
+
+.skill-month {
+  margin-bottom: 40px;
+}
+
+.skill-month select {
+  width: 94px;
+  height: 44px;
+  padding: 8px 16px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+/* =========================
+カテゴリ
+========================= */
+
+.skill-category {
+  height: 436px;
+  padding: 40px;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.skill-category:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================
+category header
+========================= */
+
+.skill-category-header {
+  width: 880px;
+  height: 48px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* =========================
+category title
+========================= */
+
+.skill-category-title-area {
+  width: 240px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skill-category-title {
+  height: 28px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.skill-category-title-line {
+  width: 240px;
+  height: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+項目追加ボタン
+========================= */
+
+.skill-add-button {
+  width: 178px;
+  height: 48px;
+  padding: 16px 40px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #1b5678;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* =========================
+table
+========================= */
+
+.skill-table {
+  width: 880px;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow:
+    0 1px 5px rgba(0, 0, 0, 0.12),
+    0 2px 2px rgba(0, 0, 0, 0.14);
+}
+
+/* =========================
+table header
+========================= */
+
+.skill-table-header {
+  width: 880px;
+  height: 57px;
+  display: grid;
+  grid-template-columns: 240px 240px 200px 200px;
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.skill-header-name {
+  width: 240px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 16px 40px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.skill-header-time {
+  width: 240px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.skill-header-save,
+.skill-header-delete {
+  width: 200px;
+  height: 56px;
+  box-sizing: border-box;
+}
+
+/* =========================
+table body
+========================= */
+
+.skill-table-body {
+  max-height: 219px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* =========================
+table row
+========================= */
+
+.skill-table-row {
+  width: 880px;
+  height: 73px;
+  display: grid;
+  grid-template-columns: 240px 240px 200px 200px;
+  border-bottom: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.skill-table-row:last-child {
+  border-bottom: 0;
+}
+
+/* =========================
+項目名
+========================= */
+
+.skill-name-cell {
+  width: 240px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 16px 40px;
+  box-sizing: border-box;
+}
+
+.skill-name {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+}
+
+/* =========================
+学習時間
+========================= */
+
+.skill-time-cell {
+  width: 240px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.skill-time-input {
+  width: 160px;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.15px;
+  box-sizing: border-box;
+}
+
+/* =========================
+学習時間保存ボタン
+========================= */
+
+.skill-save-cell {
+  width: 200px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.skill-save-button {
+  width: 158px;
+  height: 32px;
+  padding: 8px 16px;
+  border: 1px solid #1b5678;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #1b5678;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* =========================
+削除ボタン
+========================= */
+
+.skill-delete-cell {
+  width: 200px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.skill-delete-button {
+  width: 88px;
+  height: 32px;
+  margin: 0;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 4px;
+  background-color: #ee6969;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
+}
