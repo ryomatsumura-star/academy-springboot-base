@@ -595,10 +595,16 @@ main {
   margin-bottom: 40px;
 }
 
-.skill-month select {
+.skill-month-select {
+  position: relative;
   width: 94px;
   height: 44px;
-  padding: 8px 16px;
+}
+
+.skill-month-select select {
+  width: 94px;
+  height: 44px;
+  padding: 8px 40px 8px 16px;
   border: 1px solid #dddddd;
   border-radius: 4px;
   background-color: #ffffff;
@@ -606,7 +612,23 @@ main {
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
   box-sizing: border-box;
+}
+
+.skill-month-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
 }
 
 /* =========================

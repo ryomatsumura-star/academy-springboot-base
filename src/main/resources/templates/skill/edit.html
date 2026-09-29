@@ -18,18 +18,22 @@
 
       <form th:action="@{/skill/edit}" method="get">
 
-        <select
-          name="month"
-          onchange="this.form.submit()">
+        <div class="skill-month-select">
 
-          <option
-            th:each="month : ${months}"
-            th:value="${month}"
-            th:text="${month.monthValue + '月'}"
-            th:selected="${month.equals(selectedMonth)}">
-          </option>
+          <select
+            name="month"
+            onchange="this.form.submit()">
 
-        </select>
+            <option
+              th:each="month : ${months}"
+              th:value="${month}"
+              th:text="${month.monthValue + '月'}"
+              th:selected="${month.equals(selectedMonth)}">
+            </option>
+
+          </select>
+
+        </div>
 
       </form>
 
@@ -129,21 +133,12 @@
                 type="button">
                 削除する
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
-
   <div th:replace="~{fragments/footer :: footer}"></div>
-
 </body>
-
 </html>
