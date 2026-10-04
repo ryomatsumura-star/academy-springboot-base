@@ -2,6 +2,7 @@ package com.spring.springbootapplication.service;
 
 import com.spring.springbootapplication.entity.Category;
 import com.spring.springbootapplication.repository.CategoryRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +18,10 @@ public class CategoryService {
 
   public List<Category> findAll() {
     return categoryRepository.findAll();
+  }
+
+  public Category findById(Long id) {
+    return categoryRepository.findById(id)
+        .orElseThrow();
   }
 }
