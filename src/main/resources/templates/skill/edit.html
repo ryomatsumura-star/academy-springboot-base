@@ -89,10 +89,25 @@
         <div class="skill-table-body">
 
           <!-- テーブル行 -->
-          <div
+          <form
+            th:action="@{/skill/edit}"
+            method="post"
             class="skill-table-row"
             th:each="learningData : ${learningDataList}"
-            th:if="${learningData.category.id == category.id}">
+            th:if="${learningData.category != null
+                    and learningData.category.id == category.id}">
+
+            <!-- ID -->
+            <input
+              type="hidden"
+              name="id"
+              th:value="${learningData.id}">
+
+            <!-- 選択中の月 -->
+            <input
+              type="hidden"
+              name="month"
+              th:value="${selectedMonth}">
 
             <!-- 項目名 -->
             <div class="skill-name-cell">
@@ -110,6 +125,7 @@
               <input
                 class="skill-time-input"
                 type="number"
+                name="studyMinutes"
                 th:value="${learningData.studyMinutes}">
 
             </div>
@@ -119,7 +135,7 @@
 
               <button
                 class="skill-save-button"
-                type="button">
+                type="submit">
                 学習時間を保存する
               </button>
 
@@ -133,12 +149,49 @@
                 type="button">
                 削除する
               </button>
+
             </div>
-          </div>
+
+          </form>
+
         </div>
+
       </div>
+
     </section>
+
+    <!-- 更新完了モーダル -->
+<div
+  class="skill-edit-modal-overlay"
+  th:if="${updatedName != null}">
+
+  <div class="skill-edit-modal">
+
+      <p class="skill-edit-modal-message">
+        <span
+          class="skill-edit-modal-message-line"
+          th:text="${updatedName}">
+        </span>
+
+        <span class="skill-edit-modal-message-line">
+          の学習時間を保存しました！
+        </span>
+      </p>
+
+      <a
+        class="skill-edit-modal-button"
+        th:href="@{/skill/edit(month=${selectedMonth})}">
+        編集ページに戻る
+      </a>
+
+    </div>
+
+  </div>
+
   </main>
+
   <div th:replace="~{fragments/footer :: footer}"></div>
+
 </body>
+
 </html>

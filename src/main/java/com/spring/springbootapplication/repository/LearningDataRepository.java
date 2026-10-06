@@ -14,10 +14,10 @@ public interface LearningDataRepository
 
   List<LearningData> findByUserId(Long userId);
 
-  List<LearningData> findByUserIdAndStudyMonth(
-      Long userId,
-      LocalDate studyMonth
-  );
+  List<LearningData> findByUserIdAndStudyMonthOrderByIdAsc(
+    Long userId,
+    LocalDate studyMonth
+);
 
   boolean existsByUserIdAndStudyMonthAndName(
       Long userId,
