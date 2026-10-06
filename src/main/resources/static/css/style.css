@@ -575,6 +575,7 @@ main {
   font-family: Roboto, sans-serif;
 }
 
+
 /* =========================
 題目
 ========================= */
@@ -586,6 +587,7 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
+
 
 /* =========================
 プルダウン
@@ -604,32 +606,45 @@ main {
 .skill-month-select select {
   width: 94px;
   height: 44px;
-  padding: 8px 40px 8px 16px;
+
+  padding: 8px 16px;
+
   border: 1px solid #dddddd;
   border-radius: 4px;
+
   background-color: #ffffff;
+
   color: #000000;
+
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
+
   appearance: none;
   -webkit-appearance: none;
+
   cursor: pointer;
   box-sizing: border-box;
 }
 
 .skill-month-select::after {
   content: "";
+
   position: absolute;
   top: 50%;
   right: 12px;
+
   width: 7px;
   height: 7px;
+
   border-right: 2px solid #000000;
   border-bottom: 2px solid #000000;
+
   transform: translateY(-70%) rotate(45deg);
+
   pointer-events: none;
 }
+
 
 /* =========================
 カテゴリ
@@ -637,19 +652,24 @@ main {
 
 .skill-category {
   height: 436px;
+
   padding: 40px;
   margin-bottom: 80px;
+
   display: flex;
   flex-direction: column;
   gap: 32px;
+
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 8px;
+
   box-sizing: border-box;
 }
 
 .skill-category:last-child {
   margin-bottom: 0;
 }
+
 
 /* =========================
 category header
@@ -658,10 +678,12 @@ category header
 .skill-category-header {
   width: 880px;
   height: 48px;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
+
 
 /* =========================
 category title
@@ -670,15 +692,20 @@ category title
 .skill-category-title-area {
   width: 240px;
   height: 44px;
+
   display: flex;
   flex-direction: column;
+
   gap: 16px;
 }
 
 .skill-category-title {
   height: 28px;
+
   margin: 0;
+
   color: rgba(0, 0, 0, 0.75);
+
   font-size: 24px;
   font-weight: 700;
   line-height: 100%;
@@ -687,8 +714,10 @@ category title
 .skill-category-title-line {
   width: 240px;
   height: 0;
+
   border-bottom: 2px solid rgba(0, 0, 0, 0.5);
 }
+
 
 /* =========================
 項目追加ボタン
@@ -697,19 +726,29 @@ category title
 .skill-add-button {
   width: 178px;
   height: 48px;
+
   padding: 16px 40px;
+
   border: 0;
   border-radius: 4px;
+
   background-color: #1b5678;
+
   color: #ffffff;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 100%;
+
   white-space: nowrap;
+
   cursor: pointer;
+
   box-sizing: border-box;
+
   text-decoration: none;
 }
+
 
 /* =========================
 table
@@ -717,13 +756,18 @@ table
 
 .skill-table {
   width: 880px;
+
   overflow: hidden;
+
   background-color: #ffffff;
+
   border-radius: 4px;
+
   box-shadow:
     0 1px 5px rgba(0, 0, 0, 0.12),
     0 2px 2px rgba(0, 0, 0, 0.14);
 }
+
 
 /* =========================
 table header
@@ -732,20 +776,29 @@ table header
 .skill-table-header {
   width: 880px;
   height: 57px;
+
   display: grid;
+
   grid-template-columns: 240px 240px 200px 200px;
+
   border-bottom: 1px solid #e0e0e0;
+
   box-sizing: border-box;
 }
 
 .skill-header-name {
   width: 240px;
   height: 56px;
+
   display: flex;
   align-items: center;
+
   padding: 16px 40px;
+
   box-sizing: border-box;
+
   color: rgba(0, 0, 0, 0.87);
+
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -755,11 +808,16 @@ table header
 .skill-header-time {
   width: 240px;
   height: 56px;
+
   display: flex;
   align-items: center;
+
   padding: 16px;
+
   box-sizing: border-box;
+
   color: rgba(0, 0, 0, 0.87);
+
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -770,8 +828,10 @@ table header
 .skill-header-delete {
   width: 200px;
   height: 56px;
+
   box-sizing: border-box;
 }
+
 
 /* =========================
 table body
@@ -779,9 +839,11 @@ table body
 
 .skill-table-body {
   max-height: 219px;
+
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 
 /* =========================
 table row
@@ -790,15 +852,20 @@ table row
 .skill-table-row {
   width: 880px;
   height: 73px;
+
   display: grid;
+
   grid-template-columns: 240px 240px 200px 200px;
+
   border-bottom: 1px solid #e0e0e0;
+
   box-sizing: border-box;
 }
 
 .skill-table-row:last-child {
   border-bottom: 0;
 }
+
 
 /* =========================
 項目名
@@ -807,19 +874,38 @@ table row
 .skill-name-cell {
   width: 240px;
   height: 72px;
+
   display: flex;
   align-items: center;
+
   padding: 16px 40px;
+
   box-sizing: border-box;
+
+  /* 長い項目名がセルからはみ出さないようにする */
+  min-width: 0;
+  overflow: hidden;
 }
 
 .skill-name {
+  width: 100%;
+
   color: rgba(0, 0, 0, 0.87);
+
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   letter-spacing: 0.15px;
+
+  /* 3行まで表示して、それ以降は「…」 */
+  display: -webkit-box;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
+
 
 /* =========================
 学習時間
@@ -828,26 +914,36 @@ table row
 .skill-time-cell {
   width: 240px;
   height: 72px;
+
   display: flex;
   align-items: center;
+
   padding: 16px;
+
   box-sizing: border-box;
 }
 
 .skill-time-input {
   width: 160px;
   height: 40px;
+
   padding: 10px 12px;
+
   border: 1px solid rgba(0, 0, 0, 0.23);
   border-radius: 4px;
+
   background-color: #ffffff;
+
   color: rgba(0, 0, 0, 0.54);
+
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0.15px;
+
   box-sizing: border-box;
 }
+
 
 /* =========================
 学習時間保存ボタン
@@ -856,28 +952,40 @@ table row
 .skill-save-cell {
   width: 200px;
   height: 72px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 16px;
+
   box-sizing: border-box;
 }
 
 .skill-save-button {
   width: 158px;
   height: 32px;
+
   padding: 8px 16px;
+
   border: 1px solid #1b5678;
   border-radius: 4px;
+
   background-color: #ffffff;
+
   color: #1b5678;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 100%;
+
   white-space: nowrap;
+
   cursor: pointer;
+
   box-sizing: border-box;
 }
+
 
 /* =========================
 削除ボタン
@@ -886,29 +994,41 @@ table row
 .skill-delete-cell {
   width: 200px;
   height: 72px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 16px;
+
   box-sizing: border-box;
 }
 
 .skill-delete-button {
   width: 88px;
   height: 32px;
+
   margin: 0;
   padding: 8px 16px;
+
   border: 0;
   border-radius: 4px;
+
   background-color: #ee6969;
+
   color: #ffffff;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 100%;
+
   white-space: nowrap;
+
   cursor: pointer;
+
   box-sizing: border-box;
 }
+
 
 /* ========================================
 学習項目追加画面
@@ -916,8 +1036,11 @@ table row
 
 .skill-add-main {
   width: 100%;
+
   min-height: calc(100vh - 200px);
+
   padding-top: 78px;
+
   box-sizing: border-box;
 }
 
@@ -927,6 +1050,7 @@ table row
   text-align: center;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 32px;
   font-weight: 400;
 
@@ -940,11 +1064,13 @@ table row
 
 .skill-add-form {
   width: 480px;
+
   margin: 78px auto 0;
 }
 
 .skill-add-field {
   width: 480px;
+
   margin-bottom: 44px;
 }
 
@@ -959,6 +1085,7 @@ table row
   margin-bottom: 6px;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 12px;
   font-weight: 400;
 
@@ -989,6 +1116,7 @@ table row
   box-sizing: border-box;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 16px;
   font-weight: 400;
 
@@ -1008,6 +1136,7 @@ table row
   margin: 4px 0 0;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 12px;
   font-weight: 400;
   line-height: 20px;
@@ -1024,6 +1153,7 @@ table row
   margin: 4px 0 0;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 12px;
   font-weight: 400;
   line-height: 20px;
@@ -1055,6 +1185,7 @@ table row
   background-color: #1B5678;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 18px;
   font-weight: 400;
 
@@ -1067,12 +1198,14 @@ table row
   opacity: 0.9;
 }
 
+
 /* ==============================
 学習項目追加 登録完了モーダル
 ============================== */
 
 .skill-add-modal-overlay {
   position: fixed;
+
   top: 0;
   left: 0;
 
@@ -1105,8 +1238,12 @@ table row
 }
 
 .skill-add-modal-message {
-  width: 251px;
-  height: 52px;
+  width: fit-content;
+  min-width: 251px;
+  max-width: 560px;
+
+  min-height: 52px;
+  height: auto;
 
   margin: 0;
 
@@ -1117,6 +1254,7 @@ table row
   gap: 10px;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 18px;
   font-weight: 700;
   line-height: 100%;
@@ -1126,6 +1264,12 @@ table row
 
 .skill-add-modal-message-line {
   display: block;
+
+  max-width: 100%;
+
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .skill-add-modal-button {
@@ -1145,6 +1289,7 @@ table row
   color: #FFFFFF;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 100%;
