@@ -33,7 +33,7 @@ public class LearningDataService {
       User user,
       LocalDate studyMonth) {
 
-    return learningDataRepository.findByUserIdAndStudyMonth(
+    return learningDataRepository.findByUserIdAndStudyMonthOrderByIdAsc(
         user.getId(),
         studyMonth
     );
@@ -111,5 +111,10 @@ public class LearningDataService {
 
   public void deleteById(Long id) {
     learningDataRepository.deleteById(id);
+  }
+
+  public LearningData findById(Long id) {
+    return learningDataRepository.findById(id)
+            .orElseThrow();
   }
 }

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class SkillController {
@@ -220,5 +221,31 @@ public class SkillController {
     );
 
     return "skill/add";
+  }
+
+  @PostMapping("/skill/edit")
+  public String updateLearningTime(
+          @RequestParam Long id,
+          @RequestParam Integer studyMinutes,
+          @RequestParam YearMonth month,
+          Authentication authentication,
+          RedirectAttributes redirectAttributes,
+          Model model) {
+
+      User user = userService.findByEmail(authentication.getName());
+
+      LearningData learningData =
+              learningDataService.findById(id);
+
+      learningData.setStudyMinutes(studyMinutes);
+
+      learningDataService.save(learningData);
+
+      redirectAttributes.addFlashAttribute(
+              "updatedName",
+              learningData.getName()
+      );
+
+      return "redirect:/skill/edit?month=" + month;
   }
 }
