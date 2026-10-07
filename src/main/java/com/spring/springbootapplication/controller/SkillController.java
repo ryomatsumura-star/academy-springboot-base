@@ -1,5 +1,6 @@
 package com.spring.springbootapplication.controller;
 
+import com.spring.springbootapplication.dto.LearningDataEditRequest;
 import com.spring.springbootapplication.dto.LearningDataRequest;
 import com.spring.springbootapplication.entity.Category;
 import com.spring.springbootapplication.entity.LearningData;
@@ -7,6 +8,7 @@ import com.spring.springbootapplication.entity.User;
 import com.spring.springbootapplication.service.CategoryService;
 import com.spring.springbootapplication.service.LearningDataService;
 import com.spring.springbootapplication.service.UserService;
+import com.spring.springbootapplication.dto.LearningDataEditRequest;
 
 import jakarta.validation.Valid;
 
@@ -225,27 +227,92 @@ public class SkillController {
 
   @PostMapping("/skill/edit")
   public String updateLearningTime(
-          @RequestParam Long id,
-          @RequestParam Integer studyMinutes,
-          @RequestParam YearMonth month,
-          Authentication authentication,
-          RedirectAttributes redirectAttributes,
-          Model model) {
+      @RequestParam Long id,
+      @RequestParam YearMonth month,
+      @Valid
+      @ModelAttribute
+      LearningDataEditRequest learningDataEditRequest,
+      BindingResult bindingResult,
+      Authentication authentication,
+      RedirectAttributes redirectAttributes,
+      Model model) {
 
-      User user = userService.findByEmail(authentication.getName());
+    User user =
+        userService.findByEmail(
+            authentication.getName()
+        );
 
-      LearningData learningData =
-              learningDataService.findById(id);
+    LearningData learningData =
+        learningDataService.findById(id);
 
-      learningData.setStudyMinutes(studyMinutes);
+    if (bindingResult.hasErrors()) {
 
-      learningDataService.save(learningData);
+      LocalDate studyMonth =
+          month.atDay(1);
 
-      redirectAttributes.addFlashAttribute(
-              "updatedName",
-              learningData.getName()
+      List<LearningData> learningDataList =
+          learningDataService.findByUserAndMonth(
+              user,
+              studyMonth
+          );
+
+      List<Category> categories =
+          categoryService.findAll();
+
+      List<YearMonth> months = List.of(
+          YearMonth.now(),
+          YearMonth.now().minusMonths(1),
+          YearMonth.now().minusMonths(2)
       );
 
-      return "redirect:/skill/edit?month=" + month;
+      model.addAttribute(
+          "learningDataList",
+          learningDataList
+      );
+
+      model.addAttribute(
+          "categories",
+          categories
+      );
+
+      model.addAttribute(
+          "months",
+          months
+      );
+
+      model.addAttribute(
+          "selectedMonth",
+          month
+      );
+
+      model.addAttribute(
+          "errorId",
+          id
+      );
+
+      model.addAttribute(
+          "studyMinutesError",
+          bindingResult
+              .getFieldError("studyMinutes")
+              .getDefaultMessage()
+      );
+
+      return "skill/edit";
+    }
+
+    learningData.setStudyMinutes(
+        learningDataEditRequest.getStudyMinutes()
+    );
+
+    learningDataService.save(
+        learningData
+    );
+
+    redirectAttributes.addFlashAttribute(
+        "updatedName",
+        learningData.getName()
+    );
+
+    return "redirect:/skill/edit?month=" + month;
   }
 }
