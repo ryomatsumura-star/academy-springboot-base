@@ -851,7 +851,9 @@ table row
 
 .skill-table-row {
   width: 880px;
-  height: 73px;
+
+  min-height: 73px;
+  height: auto;
 
   display: grid;
 
@@ -873,7 +875,8 @@ table row
 
 .skill-name-cell {
   width: 240px;
-  height: 72px;
+  min-height: 72px;
+  height: auto;
 
   display: flex;
   align-items: center;
@@ -913,7 +916,8 @@ table row
 
 .skill-time-cell {
   width: 240px;
-  height: 72px;
+  min-height: 72px;
+  height: auto;
 
   display: flex;
   align-items: center;
@@ -944,6 +948,22 @@ table row
   box-sizing: border-box;
 }
 
+.skill-time-input-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-edit-error {
+  margin: 4px 0 0;
+
+  font-family: "Roboto", sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+
+  color: #d32f2f;
+}
 
 /* =========================
 学習時間保存ボタン
@@ -951,7 +971,8 @@ table row
 
 .skill-save-cell {
   width: 200px;
-  height: 72px;
+  min-height: 72px;
+  height: auto;
 
   display: flex;
   align-items: center;
@@ -993,7 +1014,8 @@ table row
 
 .skill-delete-cell {
   width: 200px;
-  height: 72px;
+  min-height: 72px;
+  height: auto;
 
   display: flex;
   align-items: center;

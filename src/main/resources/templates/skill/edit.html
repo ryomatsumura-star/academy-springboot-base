@@ -15,11 +15,9 @@
 
     <!-- 月選択 -->
     <div class="skill-month">
-
       <form th:action="@{/skill/edit}" method="get">
 
         <div class="skill-month-select">
-
           <select
             name="month"
             onchange="this.form.submit()">
@@ -32,11 +30,9 @@
             </option>
 
           </select>
-
         </div>
 
       </form>
-
     </div>
 
     <!-- カテゴリー -->
@@ -44,6 +40,7 @@
       class="skill-category"
       th:each="category : ${categories}">
 
+      <!-- カテゴリーヘッダー -->
       <div class="skill-category-header">
 
         <div class="skill-category-title-area">
@@ -59,7 +56,10 @@
 
         <a
           class="skill-add-button"
-          th:href="@{/skill/add(month=${selectedMonth},categoryId=${category.id})}">
+          th:href="@{/skill/add(
+            month=${selectedMonth},
+            categoryId=${category.id}
+          )}">
           項目を追加する
         </a>
 
@@ -122,11 +122,22 @@
             <!-- 学習時間 -->
             <div class="skill-time-cell">
 
-              <input
-                class="skill-time-input"
-                type="number"
-                name="studyMinutes"
-                th:value="${learningData.studyMinutes}">
+              <div class="skill-time-input-area">
+
+                <input
+                  class="skill-time-input"
+                  type="number"
+                  name="studyMinutes"
+                  th:value="${learningData.studyMinutes}">
+
+                <p
+                  class="skill-edit-error"
+                  th:if="${errorId != null
+                          and errorId == learningData.id}"
+                  th:text="${studyMinutesError}">
+                </p>
+
+              </div>
 
             </div>
 
@@ -161,32 +172,34 @@
     </section>
 
     <!-- 更新完了モーダル -->
-<div
-  class="skill-edit-modal-overlay"
-  th:if="${updatedName != null}">
+    <div
+      class="skill-edit-modal-overlay"
+      th:if="${updatedName != null}">
 
-  <div class="skill-edit-modal">
+      <div class="skill-edit-modal">
 
-      <p class="skill-edit-modal-message">
-        <span
-          class="skill-edit-modal-message-line"
-          th:text="${updatedName}">
-        </span>
+        <p class="skill-edit-modal-message">
 
-        <span class="skill-edit-modal-message-line">
-          の学習時間を保存しました！
-        </span>
-      </p>
+          <span
+            class="skill-edit-modal-message-line"
+            th:text="${updatedName}">
+          </span>
 
-      <a
-        class="skill-edit-modal-button"
-        th:href="@{/skill/edit(month=${selectedMonth})}">
-        編集ページに戻る
-      </a>
+          <span class="skill-edit-modal-message-line">
+            の学習時間を保存しました！
+          </span>
+
+        </p>
+
+        <a
+          class="skill-edit-modal-button"
+          th:href="@{/skill/edit(month=${selectedMonth})}">
+          編集ページに戻る
+        </a>
+
+      </div>
 
     </div>
-
-  </div>
 
   </main>
 
