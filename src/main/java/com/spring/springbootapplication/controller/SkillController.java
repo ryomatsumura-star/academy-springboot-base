@@ -1,17 +1,5 @@
 package com.spring.springbootapplication.controller;
 
-import com.spring.springbootapplication.dto.LearningDataEditRequest;
-import com.spring.springbootapplication.dto.LearningDataRequest;
-import com.spring.springbootapplication.entity.Category;
-import com.spring.springbootapplication.entity.LearningData;
-import com.spring.springbootapplication.entity.User;
-import com.spring.springbootapplication.service.CategoryService;
-import com.spring.springbootapplication.service.LearningDataService;
-import com.spring.springbootapplication.service.UserService;
-import com.spring.springbootapplication.dto.LearningDataEditRequest;
-
-import jakarta.validation.Valid;
-
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
@@ -25,6 +13,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.spring.springbootapplication.dto.LearningDataEditRequest;
+import com.spring.springbootapplication.dto.LearningDataRequest;
+import com.spring.springbootapplication.entity.Category;
+import com.spring.springbootapplication.entity.LearningData;
+import com.spring.springbootapplication.entity.User;
+import com.spring.springbootapplication.service.CategoryService;
+import com.spring.springbootapplication.service.LearningDataService;
+import com.spring.springbootapplication.service.UserService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class SkillController {
@@ -311,6 +310,28 @@ public class SkillController {
     redirectAttributes.addFlashAttribute(
         "updatedName",
         learningData.getName()
+    );
+
+    return "redirect:/skill/edit?month=" + month;
+  }
+
+  @PostMapping("/skill/delete")
+  public String deleteSkill(
+        @RequestParam("id") Long id,
+        @RequestParam("month") String month,
+        RedirectAttributes redirectAttributes) {
+
+    LearningData learningData =
+      learningDataService.findById(id);
+
+    String deletedName =
+      learningData.getName();
+
+    learningDataService.deleteById(id);
+
+    redirectAttributes.addFlashAttribute(
+      "deletedName",
+      deletedName
     );
 
     return "redirect:/skill/edit?month=" + month;
