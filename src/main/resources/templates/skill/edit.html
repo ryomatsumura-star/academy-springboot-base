@@ -157,7 +157,9 @@
 
               <button
                 class="skill-delete-button"
-                type="button">
+                type="submit"
+                th:formaction="@{/skill/delete}"
+                formmethod="post">
                 削除する
               </button>
 
@@ -187,6 +189,35 @@
 
           <span class="skill-edit-modal-message-line">
             の学習時間を保存しました！
+          </span>
+
+        </p>
+
+        <a
+          class="skill-edit-modal-button"
+          th:href="@{/skill/edit(month=${selectedMonth})}">
+          編集ページに戻る
+        </a>
+
+      </div>
+    </div>
+
+    <!-- 削除完了モーダル -->
+    <div
+      class="skill-edit-modal-overlay"
+      th:if="${deletedName != null}">
+
+      <div class="skill-edit-modal">
+
+        <p class="skill-edit-modal-message">
+
+          <span
+            class="skill-edit-modal-message-line"
+            th:text="${deletedName}">
+          </span>
+
+          <span class="skill-edit-modal-message-line">
+            を削除しました！
           </span>
 
         </p>
