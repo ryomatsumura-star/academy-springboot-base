@@ -1392,3 +1392,65 @@ table row
   text-decoration: none;
   white-space: nowrap;
 }
+
+
+/* =========================
+   学習チャート
+========================= */
+
+.learning-chart {
+    width: 100%;
+    max-width: 1081px;
+    margin: 48px auto 64px;
+    text-align: center;
+}
+
+/* 見出しと編集ボタン */
+.learning-chart-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 見出しエリア */
+.learning-chart-title-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 学習チャートの見出し */
+.learning-chart-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+
+/* 見出し下の横線 */
+.learning-chart-title-line {
+    width: 300px;
+    height: 1px;
+    background-color: #999999;
+    margin-top: 12px;
+}
+
+/* 編集ボタン */
+.learning-chart-edit-button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 24px;
+    background-color: #1e5674;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+/* グラフ表示領域 */
+.learning-chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 1081px;
+    height: 400px;
+    margin: 32px auto 0;
+}

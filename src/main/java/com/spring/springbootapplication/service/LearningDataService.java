@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.YearMonth;
+import java.util.ArrayList;
 
 @Service
 public class LearningDataService {
@@ -116,5 +118,48 @@ public class LearningDataService {
   public LearningData findById(Long id) {
     return learningDataRepository.findById(id)
             .orElseThrow();
+  }
+
+  public Map<String, List<Integer>> getChartData(User user) {
+    YearMonth currentMonth = YearMonth.now();
+    List<YearMonth> months = List.of(
+            currentMonth.minusMonths(2),
+            currentMonth.minusMonths(1),
+            currentMonth
+    );
+
+    List<String> categories = List.of(
+            "バックエンド",
+            "フロントエンド",
+            "インフラ"
+    );
+
+    Map<String, List<Integer>> chartData =
+            new LinkedHashMap<>();
+
+    for (String category : categories) {
+        chartData.put(category, new ArrayList<>());
+    }
+
+    for (YearMonth month : months) {
+
+        List<LearningData> dataList =
+                findByUserAndMonth(user, month.atDay(1));
+
+        for (String category : categories) {
+
+            int totalMinutes = dataList.stream()
+                    .filter(data ->
+                            category.equals(
+                                    data.getCategory().getName()
+                            ))
+                    .mapToInt(LearningData::getStudyMinutes)
+                    .sum();
+
+            chartData.get(category).add(totalMinutes);
+        }
+    }
+
+    return chartData;
   }
 }

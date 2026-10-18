@@ -67,15 +67,4 @@ public class AuthController {
     }
     return "auth/login";
   }
-
-  @GetMapping("/home")
-  public String home(Authentication authentication, Model model) {
-    User user = userService.findByEmail(authentication.getName());
-    List<LearningData> learningDataList = learningDataService.findByUser(user);
-    Map<String, Integer> categoryMinutes = learningDataService.getCategoryMinutes(user);
-    model.addAttribute("user", user);
-    model.addAttribute("learningDataList", learningDataList);
-    model.addAttribute("categoryMinutes", categoryMinutes);
-    return "home";
-  }
 }
